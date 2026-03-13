@@ -12,7 +12,7 @@ export interface ConversionResponse {
 
 export interface TaskStatusResponse {
   task_id: string;
-  status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'FAILED';
+  status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'FAILED' | 'TIMEOUT';
   progress?: number;
   download_url?: string;
   error?: string;

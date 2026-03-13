@@ -10,7 +10,7 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({ downloadUrl, fil
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = downloadUrl;
-    link.download = filename.replace('.pdf', '.docx');
+    link.download = filename.replace(/\.pdf$/i, '.docx');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

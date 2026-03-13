@@ -24,13 +24,19 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
           description: `Uploading ${filename || 'file'} to secure storage...`,
           color: 'text-primary-600',
         };
-      case 'processing':
+      case 'processing': {
+        let description = 'Starting conversion...';
+        if (progress >= 80) description = 'Uploading converted file...';
+        else if (progress >= 30) description = 'Analyzing and converting document layout, text, fonts, and images...';
+        else if (progress >= 10) description = 'Downloading PDF for processing...';
+
         return {
           icon: <Loader2 className="w-8 h-8 text-primary-500 animate-spin" />,
           title: 'Converting PDF to DOCX',
-          description: 'Processing your document...',
+          description,
           color: 'text-primary-600',
         };
+      }
       case 'completed':
         return {
           icon: <CheckCircle className="w-8 h-8 text-green-500" />,
